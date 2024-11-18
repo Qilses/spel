@@ -1,7 +1,7 @@
 import GameObject from "./GameObject" 
-import ball from "./ball"
-import input from "./input"
-import player from "./player"
+import ball from "./Ball"
+import input from "./Input"
+import player from "./Player"
 
 export default class Game { // skapar klassen
   constructor(width, height) { // klassens constructor
