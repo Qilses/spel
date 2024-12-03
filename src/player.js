@@ -1,5 +1,5 @@
 import GameObject from "./GameObject";
-
+import Projectile from "./Projectile";
 
 export default class player extends GameObject {
   constructor(x, y, width, height, color, game) {
@@ -8,9 +8,9 @@ export default class player extends GameObject {
     this.grounded = false
 
     this.image = new Image()
-    this.image.src = "./src/assets/_Idle.png"
+    this.image.src = "src/assets/franks_doge.png"
 
-    this.frameWidth = 120
+    this.frameWidth = 100
     this.frameHeight = 80
     this.frameX =  0
     this.frameY = 0
@@ -26,28 +26,23 @@ export default class player extends GameObject {
     this.color = "255, 0, 0"
   }
   update(deltaTime) {
-    if (this.game.input.keys.has("ArrowLeft")) {
-      console.log("pil vänster")
+    if (this.game.input.keys.has("ArrowLeft","a")) {
       this.speedX -= this.maxSpeedX
     }
-    if (this.game.input.keys.has("ArrowRight")) {
+    if (this.game.input.keys.has("ArrowRight","d")) {
       this.speedX += this.maxSpeedX
     }
-
-
-    if (!this.game.input.keys.has("ArrowRight") && !this.game.input.keys.has("ArrowLeft")) {
+    if (!this.game.input.keys.has("ArrowRight","d") && !this.game.input.keys.has("ArrowLeft","a")) {
       this.speedX = 0
     }
 
-    if (this.game.input.keys.has("ArrowUp")) {
+    if (this.game.input.keys.has("ArrowUp","w")) {
       this.speedY -= this.maxSpeedY
       this.y -= 5
     }
-    if (!this.game.input.keys.has("ArrowUp")) {
+    if (!this.game.input.keys.has("ArrowUp","w")) {
       this.speedY = 0
     }
-
-    console.log(this.y)
     if (this.y > 400) {
       this.speedY = 0
     }else {
@@ -78,6 +73,7 @@ export default class player extends GameObject {
     }
     if (this.frameX >= this.maxFrames) {
       this.frameX = 0
+      this.frameY = 100
     }
     if (this.frameY >= this.maxFrame) { 
     }
